@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+	<properties resource="generator/generator.properties" />
+	<context id="aloe" targetRuntime="MyBatis3Simple"
+		defaultModelType="flat">
+		<property name="javaFileEncoding" value="UTF-8" />
+		<property name="beginningDelimiter" value="`" />
+		<property name="endingDelimiter" value="`" />
+		<property name="autoDelimitKeywords" value="true" />
+		<!-- 格式化java代码 -->
+		<property name="javaFormatter"
+			value="org.mybatis.generator.api.dom.DefaultJavaFormatter" />
+		<!-- 格式化XML代码 -->
+		<property name="xmlFormatter"
+			value="org.mybatis.generator.api.dom.DefaultXmlFormatter" />
+		<!-- 序列化 -->
+		<!-- <plugin type="org.mybatis.generator.plugins.SerializablePlugin"> </plugin> -->
+		<plugin type="${mapper.plugin}">
+			<property name="mappers" value="${mapper.Mapper}" />
+		</plugin>
+		<commentGenerator>
+			<!--阻止 生成注释 -->
+			<property name="suppressAllComments" value="true" />
+			<!-- 阻止 生成的注释包含时间戳 -->
+			<property name="suppressDate" value="true" />
+		</commentGenerator>
+		<jdbcConnection driverClass="${dbcp.driver}"
+			connectionURL="${dbcp.url}" userId="${dbcp.username}" password="${dbcp.password}">
+		</jdbcConnection>
+		<!-- java类型处理器 -->
+		<javaTypeResolver
+			type="org.mybatis.generator.internal.types.JavaTypeResolverDefaultImpl">
+			<property name="forceBigDecimals" value="false" />
+		</javaTypeResolver>
+		<!-- 生成实体类 -->
+		<javaModelGenerator targetPackage="${targetModelPackage}"
+			targetProject="${targetJavaProject}">
+			<!-- 根据catalog和schema来生成子包 默认false -->
+			<property name="enableSubPackages" value="true" />
+			<!-- 所有实体类的基类 -->
+			<property name="rootClass" value="com.example.vo.BaseVo" />
+			<property name="trimStrings" value="true" />
+		</javaModelGenerator>
+		<!-- 生成 mapper xml-->
+		<sqlMapGenerator targetPackage="mapper"
+			targetProject="${targetResourcesProject}" />
+		<!-- 生成 mapper 接口 -->
+		<javaClientGenerator targetPackage="${targetMapperPackage}"
+			targetProject="${targetJavaProject}" type="XMLMAPPER">
+			<!--基本mapper接口  参照tk.mybatis.mapper.generator.MapperPlugin-->
+<!-- 			<property name="rootInterface" value="${mapper.Mapper}"/> -->
+		</javaClientGenerator>
+		<!-- 销售线索信息 -->
+<!-- 		<table tableName="t_sales_leads_info" domainObjectName="SalesLeadsInfoVo">
+			<ignoreColumn column="id" />
+			<ignoreColumn column="create_time" />
+			<ignoreColumn column="update_time" />
+		</table> -->
+		<!-- 线索已有车型信息 -->
+<!-- 		<table tableName="t_sales_lead_exist_car_info" domainObjectName="SalesLeadExistCarInfoVo">
+			<ignoreColumn column="id" />
+			<ignoreColumn column="create_time" />
+			<ignoreColumn column="update_time" />
+		</table> -->
+		<!-- 销售线索/名单状态信息 -->
+<!-- 		<table tableName="t_sales_leads_status_info" domainObjectName="SalesLeadsStatusInfoVo">
+			<ignoreColumn column="id" />
+			<ignoreColumn column="create_time" />
+			<ignoreColumn column="update_time" />
+		</table> -->
+		<!-- 销售线索/名单状态信息 -->
+<!-- 		<table tableName="t_sales_lead_reception_relation_info" domainObjectName="SalesLeadReceptionRelationInfoVo">
+			<ignoreColumn column="id" />
+			<ignoreColumn column="create_time" />
+			<ignoreColumn column="update_time" />
+		</table> -->
+		<!-- 商品订单-->
+		<table tableName="t_sku_order_info" domainObjectName="SkuOrderInfoVo">
+			<ignoreColumn column="id" />
+			<ignoreColumn column="create_time"/>
+			<ignoreColumn column="update_time"/>
+			<ignoreColumn column="create_by"/>
+			<ignoreColumn column="update_by"/>
+			<ignoreColumn column="create_org_code"/>
+			<ignoreColumn column="is_deleted"/>
+		</table>
+		<!-- 商品订单明细 -->
+		<table tableName="t_sku_order_detail_info" domainObjectName="SkuOrderDetailInfoVo">
+			<ignoreColumn column="id" />
+			<ignoreColumn column="create_time"/>
+			<ignoreColumn column="update_time"/>
+			<ignoreColumn column="create_by"/>
+			<ignoreColumn column="update_by"/>
+			<ignoreColumn column="create_org_code"/>
+			<ignoreColumn column="is_deleted"/>
+		</table>
+		<!-- 服务订单 -->
+		<table tableName="t_service_order_info" domainObjectName="ServiceOrderInfoVo">
+			<ignoreColumn column="id" />
+			<ignoreColumn column="create_time"/>
+			<ignoreColumn column="update_time"/>
+			<ignoreColumn column="create_by"/>
+			<ignoreColumn column="update_by"/>
+			<ignoreColumn column="create_org_code"/>
+			<ignoreColumn column="is_deleted"/>
+		</table>
+		<!-- 商品订单明细-->
+		<table tableName="t_service_order_detail_info" domainObjectName="ServiceOrderDetailInfoVo">
+			<ignoreColumn column="id" />
+			<ignoreColumn column="create_time"/>
+			<ignoreColumn column="update_time"/>
+			<ignoreColumn column="create_by"/>
+			<ignoreColumn column="update_by"/>
+			<ignoreColumn column="create_org_code"/>
+			<ignoreColumn column="is_deleted"/>
+		</table>
+		<!-- 订单组合/套餐明细-->
+		<table tableName="t_order_combination_detail_info" domainObjectName="OrderCombinationDetailInfoVo">
+			<ignoreColumn column="id" />
+			<ignoreColumn column="create_time"/>
+			<ignoreColumn column="update_time"/>
+			<ignoreColumn column="create_by"/>
+			<ignoreColumn column="update_by"/>
+			<ignoreColumn column="create_org_code"/>
+			<ignoreColumn column="is_deleted"/>
+		</table>
+	</context>
+
+
+</generatorConfiguration>
